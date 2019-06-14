@@ -18,6 +18,9 @@ function  withdrawal(minus){
  
  }
 
+Customer.prototype.details = function() {
+    return this.wholeName + " " + this.initialPayment;
+  }
 
 Desposit.prototype.finaldep = function(){
     return this.Despositadd + this.initialPayment;
@@ -32,10 +35,10 @@ $(document).ready(function(){
    $('#first').submit(function(){
     event.preventDefault();
 
-    var inputName = document.getElementById("name").value;
-    var inputInitial = document.getElementById("Initial").value;
-     var account = new Customer (inputName,inputInitial);
-    $()
+    var inputtedWholeName = $(this).find("name").val();
+    var inputtedInitialPayment = $(this).find("Initial").val();
+    var newCustomer = Customer (inputtedWholeName,inputtedInitialPayment);
+    $("ul#contacts").append("<li><span class='contact'>" + newCustomer.details() + "</span></li>");
    });
   
 
